@@ -11,7 +11,7 @@ export const databaseConnection = () => {
       .connect(databaseUri)
       .then(() => log.info('Successfully connected to database.'))
       .catch((error) => {
-        log.error('Error connecting to database', error);
+        log.error('Error connecting to database', { error: error.message, stack: error.stack });
         setTimeout(connect, 5000); // Retry after 5 seconds
       });
   };
